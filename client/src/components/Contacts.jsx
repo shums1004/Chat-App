@@ -29,7 +29,7 @@ export default function Contacts({contacts, currentUser, changeChat}) {
   return (
     <>
       {
-        currentUserImage && currentUserName && (
+        currentUserName && (
           <div className='contactsContainer'>
             <div className="brand">
               <img  src={Logo} alt ="logo"/>

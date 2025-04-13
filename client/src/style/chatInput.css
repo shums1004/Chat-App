@@ -1,6 +1,7 @@
 
 .mainInputContainer{
     display: flex;
+    margin-top: 2rem;
     height: 3rem;
     justify-content: center;
     align-items: center;

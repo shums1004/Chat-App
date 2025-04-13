@@ -10,7 +10,7 @@ const socket = require("socket.io");
 const app = express();
 
 app.use(cors({
-    origin: true,
+    origin: "http://localhost:3000", // frontend origin
     credentials: true,
 }));
 app.use(express.json());
@@ -28,11 +28,11 @@ const server = app.listen(port, ()=>{
 })
 
 const io = socket(server, {
-    
-        origin : "http://localhost:3000",
+    cors: {
+        origin: "http://localhost:3000",
         credentials: true,
         methods: ["GET", "POST"],
-        allowedHeaders: ["Access-Control-Allow-Origin"],
+    }
 });
 
 
@@ -48,7 +48,7 @@ io.on("connection", (socket) =>{
     socket.on("sendMsg", (data) =>{
         const sendUserSocket = onlineUsers.get(data.to);
         if(sendUserSocket){
-            socket.to(sendUserSocket).emit("msgRecieve", data.msg);
+            socket.to(sendUserSocket).emit("msgRecieve", data.message);
         }
     })
 

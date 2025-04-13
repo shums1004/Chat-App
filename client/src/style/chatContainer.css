@@ -1,52 +1,134 @@
-.chatContainer{
+.chatContainer {
     display: grid;
-    grid-template-rows: 20% 70% 10%;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    width: 100%;
     max-width: 100%;
     max-height: 100%;
-    .chatHeader{
-        display: flex;
-        gap:3rem;
-        background-color: white;
-        align-items: center;
-        
-        .avatar{
-            img{
-                height: 4rem;
-             }
-         }
+    background-color: #f2f2f2;
+  }
+  
+  /* Chat Header */
+  .chatContainer .chatHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .chatContainer .chatHeader .avatar img {
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .chatContainer .chatHeader .chatUserName h3 {
+    font-size: 1.4rem;
+    color: #002d67;
+    margin: 0;
+  }
+  
+  /* Chat Messages */
+  .chatContainer .chatMessages {
+    background-color: #002d67;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 0.8rem;
+    padding: 1rem;
+    scroll-behavior: smooth;
+  }
+  
+  /* Individual message */
+  .chatContainer .chatMessages .message {
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .chatContainer .chatMessages .message .content {
+    max-width: 75%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    color: #000;
+    line-height: 1.4;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sent & Received Messages */
+  .chatContainer .chatMessages .sent {
+    justify-content: flex-end;
+  }
+  
+  .chatContainer .chatMessages .sent .content {
+    background-color: #fbfafdd4;
+    border-top-right-radius: 0;
+  }
+  
+  .chatContainer .chatMessages .received {
+    justify-content: flex-start;
+  }
+  
+  .chatContainer .chatMessages .received .content {
+    background-color: #ffffff;
+    border-top-left-radius: 0;
+  }
+  
+  /* Chat Footer (optional if using ChatInput here) */
+  .chatContainer .chatFooter {
+    padding: 1rem;
+    background-color: white;
+    border-top: 1px solid #ccc;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .chatContainer .chatHeader {
+      gap: 1rem;
     }
-    .chatMessages{
-        height: 35rem;
-        background-color: rgb(0, 45, 103);
-        display: flex;
-        flex-direction: column;
-        overflow: auto;
-        gap: 1rem;
-        padding: 1rem;
-        .message{
-            display: flex;
-            align-items: center;
-            .content{
-                max-width: 40%;
-                overflow-wrap: break-word;
-                padding: 1rem;
-                font-size: 1.1rem;
-                border-radius: 1rem;
-                color:rgb(0, 0, 0)
-            }
-        } 
-        .sent{
-            justify-content: flex-end;
-            .content{
-                background-color:  #fbfafdd4;
-            }
-        }
-        .recived{
-            justify-content: flex-start;
-            .content{
-                background-color: #ffffff;
-            }
-        }
+  
+    .chatContainer .chatHeader .avatar img {
+      height: 3rem;
+      width: 3rem;
     }
-    
-}
+  
+    .chatContainer .chatHeader .chatUserName h3 {
+      font-size: 1.1rem;
+    }
+  
+    .chatContainer .chatMessages .message .content {
+      font-size: 0.9rem;
+      padding: 0.6rem 0.9rem;
+      max-width: 85%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .chatContainer .chatHeader {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  
+    .chatContainer .chatHeader .chatUserName h3 {
+      font-size: 1rem;
+    }
+  
+    .chatContainer .chatMessages {
+      padding: 0.6rem;
+    }
+  
+    .chatContainer .chatMessages .message .content {
+      font-size: 0.85rem;
+      max-width: 90%;
+    }
+  }
+  

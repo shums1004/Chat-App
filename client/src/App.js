@@ -5,8 +5,11 @@ import Chat from "./pages/Chat.jsx";
 import Logout from "./pages/Logout.jsx";
 import RequireAuth from "./components/RequireAuth.js";
 import SetAvatar from "./pages/SetAvatar.jsx";
+import axios from "axios";
 
 function App() {
+  axios.defaults.baseURL = "http://localhost:5000"; // optional
+  axios.defaults.withCredentials = true;  
   return (
     <BrowserRouter>
       <Routes>

@@ -35,7 +35,7 @@ export default function ChatContainer({currentChat, currentUser, socket}) {
     };
     getChat();  
     console.log(messages);
-  },[currentChat,currentUser ] )
+  },[currentChat,currentUser] )
 
   
   const handleSendMsg = async(msg) =>{
@@ -66,18 +66,25 @@ export default function ChatContainer({currentChat, currentUser, socket}) {
     }
   },[]);
 
+  
 
-  useEffect(()=>{
-    try{
+  // useEffect(()=>{
+  //   try{
 
-      arrivalMessage && setArrivalMessage((prev)=> [...prev, arrivalMessage]);
+  //     arrivalMessage && setArrivalMessage((prev)=> [...prev, arrivalMessage]);
+  //   }
+  //   catch(err){
+  //     console.log(err);
+  //   }
+  //   },[arrivalMessage]);
+
+  useEffect(() => {
+    if (arrivalMessage) {
+      setMessages((prev) => [...prev, arrivalMessage]);
+      console.log("Arrival message:", arrivalMessage);
     }
-    catch(err){
-      console.log(err);
-    }
-    },[arrivalMessage]);
-
- 
+  }, [arrivalMessage]);
+  
 
 
   useEffect(()=>{
@@ -115,8 +122,11 @@ export default function ChatContainer({currentChat, currentUser, socket}) {
           })
         }
       </div>
+      
+      <br/>
       <ChatInput handleSendMsg={handleSendMsg}/>
     </div>
+    
     )
     }
     </>

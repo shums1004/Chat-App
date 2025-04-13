@@ -45,7 +45,7 @@ export default function Chat() {
     if (currentUser) {
     
       console.log(currentUser);
-      if (currentUser.data._id && currentUser.data.isAvatarImageSet) {
+      if (currentUser.data._id ) {
         console.log("User ID:", currentUser.data._id);
         async function fetchContacts() {
           try {
